@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ajay kumar | Creative Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;400&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(120deg, #659999 0%, #f4791f 100%);
+      color: #111;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 70px 10px 30px;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+      position: relative;
+      z-index: 2;
+    }
+    header h1 {
+      font-size: 3.2rem;
+      margin: 0;
+      color: #f4791f;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: fadeInDown 1s;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #324960;
+      margin-top: 8px;
+      animation: fadeInUp 1.2s;
+    }
+    nav {
+      text-align: center;
+      margin: 25px 0;
+    }
+    nav a {
+      display: inline-block;
+      margin: 0 16px;
+      font-size: 1.1rem;
+      color: #659999;
+      text-decoration: none;
+      position: relative;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 3px;
+      background: #f4791f;
+      transition: width 0.3s;
+      border-radius: 5px;
+      margin-top: 2px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    nav a:hover, nav a.active {
+      color: #f4791f;
+    }
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+    section {
+      margin: 60px auto;
+      max-width: 950px;
+      width: 94%;
+      background: rgba(255,255,255,0.96);
+      border-radius: 20px;
+      box-shadow: 0 10px 50px rgba(100,60,5,0.08);
+      padding: 50px 28px;
+      animation: fadeIn 1.3s;
+    }
+    h2 {
+      font-size: 2rem;
+      color: #f4791f;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+    }
+    .about-image {
+      flex: 1 1 190px;
+      max-width: 180px;
+      border-radius: 50%;
+      box-shadow: 0 2px 24px #f4791f55;
+      object-fit: cover;
+      border: 4px solid #65999933;
+      animation: floatImg 2.5s infinite alternate;
+    }
+    .about-text {
+      flex: 2 1 350px;
+      font-size: 1.14rem;
+      color: #333;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 18px;
+      list-style: none;
+      padding: 0;
+    }
+    .skills-list li {
+      background: linear-gradient(90deg, #659999a0, #f4791fa0);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 18px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: .8px;
+      box-shadow: 0 2px 8px #0001;
+      margin-bottom: 5px;
+      transition: transform 0.2s;
+    }
+    .skills-list li:hover {
+      transform: scale(1.08);
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .card {
+      background: #faf9f6;
+      border-radius: 13px;
+      box-shadow: 0 2px 18px #f4791f11;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-7px) scale(1.03) rotate(-2deg);
+      box-shadow: 0 8px 24px #f4791f33;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      filter: grayscale(0.2);
+      transition: filter .3s;
+    }
+    .card:hover img {
+      filter: none;
+    }
+    .card-body {
+      padding: 15px 16px 20px;
+    }
+    .card-title {
+      font-weight: 700;
+      color: #324960;
+      margin: 12px 0 7px;
+      font-size: 1.14rem;
+    }
+    .card-desc {
+      font-size: 1.02rem;
+      color: #555;
+      margin-bottom: 0;
+    }
+    .timeline {
+      border-left: 3px solid #f4791f;
+      margin: 35px 0 0 12px;
+      padding-left: 25px;
+      list-style: none;
+      max-width: 650px;
+    }
+    .timeline li {
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg,#659999,#f4791f);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 6px #f4791f55;
+    }
+    .timeline-date {
+      font-size: 0.9rem;
+      color: #659999;
+      font-weight: 700;
+    }
+    .timeline-title {
+      font-weight: 700;
+      color: #f4791f;
+      font-size: 1.12rem;
+    }
+    .timeline-desc {
+      color: #222;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 420px;
+      margin: auto;
+      gap: 13px;
+    }
+    input, textarea {
+      font-family: inherit;
+      font-size: 1.05rem;
+      border-radius: 7px;
+      border: 1.5px solid #659999aa;
+      padding: 10px 12px;
+      outline: none;
+      margin-bottom: 8px;
+      transition: border .2s;
+    }
+    input:focus, textarea:focus {
+      border: 2px solid #f4791f;
+    }
+    button {
+      font-size: 1rem;
+      font-family: inherit;
+      color: white;
+      background: linear-gradient(90deg, #659999, #f4791f);
+      padding: 12px 25px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      margin-top: 4px;
+      cursor: pointer;
+      transition: background .2s;
+      align-self: flex-end;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #f4791f, #659999);
+    }
+    footer {
+      background: #324960;
+      color: #fff;
+      text-align: center;
+      font-size: 1.06rem;
+      padding: 25px 0 17px;
+      margin-top: 55px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      box-shadow: 0 -2px 14px #f4791f22;
+    }
+    @keyframes fadeInDown {
+      0% {opacity:0; transform:translateY(-40px);}
+      100% {opacity:1; transform: none;}
+    }
+    @keyframes fadeInUp {
+      0% {opacity:0; transform:translateY(40px);}
+      100% {opacity:1; transform: none;}
+    }
+    @keyframes fadeIn {
+      0% {opacity:0;}
+      100% {opacity:1;}
+    }
+    @keyframes floatImg {
+      to {transform: translateY(-16px);}
+    }
+    @media (max-width: 750px) {
+      section {padding: 25px 7px;}
+      .about-content {flex-direction: column; align-items: flex-start;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Ajay kumar</h1>
+  <p>Creative Developer & Designer | <span style="color:#324960;">Specialization in web Developing</span></p>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-content">
+    <img class="about-image" src="C:\Users\ASUS\OneDrive\Pictures\Screenshots\Screenshot 2025-07-31 200424.png"" alt="profile"/>
+    <div class="about-text">
+      <p>
+        <strong>Hello! I’m Ajay kumar </strong>, a creative enthusiast passionate about building unique digital experiences. Specializing in interactive portfolios, I blend design, code, and art to craft compelling project showcases that win attention and prizes.<br/><br/>
+        From concept to code, I thrive on making the unexpected come alive in the browser. Explore my skills and projects below!
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <ul class="skills-list">
+    <li>HTML5 & CSS3</li>
+    <li>JavaScript </li>
+    <li>C and C++ </li>
+    <li>Fluent English spoken</li>
+    <li>Time management</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>Some Profiles and Pages</h2>
+  <div class="project-grid">
+    <div class="card">
+      <img src="http://pngimg.com/uploads/linkedIn/linkedIn_PNG8.png?ixlib=rb-4.0.3&q=60&fm=jpg&w=200" alt="Project 1">
+      <div class="card-body">
+        <div class="card-title">Linkedin Profile</div>
+        <div class="card-desc">An interactive profile of me which can tell about my self so visit my linkedin profile </div>
+      <a href ="https://www.linkedin.com/in/ajay-kumar-ab750a28a/"><button type="View">View </button></a></div>
+    </div>
+    <div class="card">
+      <img src="https://static.vecteezy.com/system/resources/previews/018/930/413/original/instagram-logo-instagram-icon-transparent-free-png.png" alt="Project 2">
+      <div class="card-body">
+        <div class="card-title">Instagram </div>
+        <div class="card-desc">A page and profile of my instagram in which you can see my post and other things</div>
+        <a href ="https://www.instagram.com/a_jay_2064/"><button type="View">View</button> </a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://logos-world.net/wp-content/uploads/2020/04/Snapchat-Logo-2011-2013.png" alt="Project 3">
+      <div class="card-body">
+        <div class="card-title">Snapchat </div>
+        <div class="card-desc">Join with me to share the daily thoughts and many more so come and join me on snapchat</div>
+        
+        <a href ="https://www.snapchat.com/add/a_jay6570"><button type="View">View</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>My Qualifications</h2>
+  <ul class="timeline">
+    <li>
+      <div class="timeline-date">2025</div>
+      <div class="timeline-title"> Currently pursing B.C.A from IAMR group of instituion</div>
+      <div class="timeline-desc">Recognized from Chaudhary Charan Singh University</div>
+    </li>
+    <li>
+      <div class="timeline-date">2023</div>
+      <div class="timeline-title">Completed 12th</div>
+      <div class="timeline-desc">From C.B.S.E Borad </div>
+    </li>
+    <li>
+      <div class="timeline-date">2021</div>
+      <div class="timeline-title">Completed 10th </div>
+      <div class="timeline-desc">From C.B.S.E Board </div>
+    </li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required/>
+    <input type="email" placeholder="Your Email" required/>
+    <textarea placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <p style="text-align:center; margin-top:17px;">
+    Contact: <a href="9871562651 , 8082189908"style="color:#f4791f ;">9871562651 , 8082189908</a><br>
+    Email: <a href="ak5951657@gmail.com" style="color:#f4791f;">ak5951657@gmail.com</a><br>
+    LinkedIn: <a href="https://www.linkedin.com/in/ajay-kumar-ab750a28a/" style="color:#f4791f;">https://www.linkedin.com/in/ajay-kumar-ab750a28a/</a>
+  </p>
+</section>
+
+<footer>
+  &copy; 2025 Ajay kumar. Made with creativity and code.
+</footer>
+</body>
+</html>
